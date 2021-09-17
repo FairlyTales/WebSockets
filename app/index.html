@@ -3,15 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <title>WebSockets playground</title>
-  </head>
-  <body>
-    <h4>Message received from server:</h4>
-    <p id="receivedMessage">
-      No messages yet. Press a button to send message to server and get a
-      response
-    </p>
-    <button>Send message to server</button>
+    <style>
+      .centered-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
+      button {
+        padding: 8px 20px;
+        border-width: 1px;
+        border-radius: 6px;
+        background-color: #d3d3d3;
+        font-size: inherit;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      button:hover {
+        opacity: 0.6;
+      }
+
+      button:active {
+        opacity: 0.4;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      font-family: 'Roboto Light', sans-serif;
+      margin: 0;
+      height: 80vh;
+      background-color: gainsboro;
+      color: #282828;
+      font-size: 24px;
+    "
+    class="centered-content"
+  >
+    <div style="display: flex; flex-direction: column">
+      <div class="centered-content" style="margin-bottom: 20px">
+        <h4 style="margin: 0; font-size: 30px">Send message to a server:</h4>
+      </div>
+      <div class="centered-content">
+        <button>Send</button>
+      </div>
+      <div class="centered-content" style="margin-top: 30px">
+        <h4 style="margin: 0; font-size: 30px">
+          Message received from server:
+        </h4>
+      </div>
+      <div class="centered-content">
+        <p id="receivedMessage">No messages yet</p>
+      </div>
+    </div>
     <script>
       // creating a connection with the server using built-in WebSocket class
       // "ws:" in the url will trigger the handshake with the WS server
