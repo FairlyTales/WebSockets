@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WebSockets playground</title>
+  </head>
+  <body>
+    <h4>Message received from server:</h4>
+    <p id="receivedMessage">
+      No messages yet. Press a button to send message to server and get a
+      response
+    </p>
+    <button>Send message to server</button>
+
+    <script>
+      // creating a connection with the server using built-in WebSocket class
+      // "ws:" in the url will trigger the handshake with the WS server
+      const socket = new WebSocket("ws://localhost:8080");
+      const btn = document.querySelector("button");
+      const receivedField = document.getElementById("receivedMessage");
+
+      // listening for messages from server
+      socket.onmessage = (message) => {
+        receivedField.textContent = message.data;
+        console.log("Full server response:");
+        console.log(message);
+      };
+
+      btn.onclick = () => {
+        socket.send("Hi! I'm a client!");
+      };
+    </script>
+  </body>
+</html>
